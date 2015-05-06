@@ -1,0 +1,2 @@
+# CodeU
+Technical exercises
