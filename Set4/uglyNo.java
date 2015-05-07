@@ -33,20 +33,47 @@ public class uglyNo {
 		return list.get(list.size()-1);
 	}
 
+	// private static boolean isugly(int n) {
+	// 	while (n> 1 && (n%2==0 || n%3==0 || n%5 ==0)) {
+	// 		if (n%2 == 0) {
+	// 			n = n/2;
+	// 		} else if (n%3==0) {
+	// 			n = n/3;
+	// 		} else if (n%5 ==0) {
+	// 			n = n/5;
+	// 		}
+	// 	}
+	// 	if(n==1) {
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
+//MORE EFFICIENT
 	private static boolean isugly(int n) {
-		while (n> 1 && (n%2==0 || n%3==0 || n%5 ==0)) {
-			if (n%2 == 0) {
-				n = n/2;
-			} else if (n%3==0) {
-				n = n/3;
-			} else if (n%5 ==0) {
-				n = n/5;
-			}
-		}
-		if(n==1) {
+		boolean flag = true;
+		if (n==1 || list.contains(n)) {
 			return true;
 		}
-		return false;
+		while(flag && (n%2==0 || n%3==0 || n%5 ==0)) {
+			if (n%2 == 0) {
+				n = n/2;
+				return isugly(n);
+			} else if (n%3==0) {
+				n = n/3;
+				return isugly(n);
+			} else if (n%5==0) {
+				n = n/5;
+				return isugly(n);
+			} else {
+				flag = false;
+			}
+		}
+		if (flag) {
+			return false;
+		}
+		return true;
+
+
 	}
 
 }
